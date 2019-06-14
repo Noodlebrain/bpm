@@ -2,13 +2,13 @@ name: TestProject
 version: 0.1.0
 
 deps:
-  - Core: [min: "", max: latest]
-  - dev:
-    - json: [min: 2.3, max: latest]
-    - readline: [min: 0.4.2, max: 0.4.2]
-    - jquery: [min: 12.2.0, max: 13.0]
-    - rubycopy: [min: "", max: ""]
-    - noconstraint: [min: "", max: ""]
-  - prod:
-    - pq: [min: "", max: ""]
-
+  dev:
+    json: {min: 2.3, max: latest}
+    readline: {min: 0.4.2, max: 0.4.2}
+    jquery: {min: 12.2.0, max: 13.0}
+    rubycopy: {min: "", max: 2.2.1}
+    noconstraint: {min: "", max: latest}
+  test:
+    unittest: {min: 2.0, max: 2.0}
+  prod:
+    name: {min: "", max: latest}

@@ -13,4 +13,11 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-lang:commons-lang:2.6'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.9'
+    implementation 'org.rauschig:jarchivelib:1.0.0'
+    implementation 'org.yaml:snakeyaml:1.24'
+
 }
