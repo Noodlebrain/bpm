@@ -50,6 +50,7 @@ public class PackageManager
         else if (args[0].equals("pump"))
         {
             // pump - upload current package to cdvs
+            pump();
 
         }
         else if (args[0].equals("help"))
@@ -184,8 +185,6 @@ public class PackageManager
             }
             catch (FileNotFoundException e)
             {
-
-
             }
 
             // get the diff between the current heartbeat and heartbeat.lock file
@@ -207,7 +206,7 @@ public class PackageManager
                             // download package
                             CdvsUtils.downloadPackage(entry.url, diffPkg);
                             // put this package on the stack so its deps can be analyzed
-                            unparsedPkgs.push(diffPkg);
+                            unparsedPkgs.push("Packages/" + diffPkg);
                             // update new lock with downloaded package
                             newLock.getDeps().putPackageIntoEnv(env, diffPkg, entry.version);
                             break;
@@ -230,6 +229,25 @@ public class PackageManager
             System.err.println("bpm: beat: WARNING: Unable to create new heartbeat.lock");
         }
 
+    }
+
+    // create tarball from package, to be uploaded to cdvs
+    /* TODO: implement login prompt, and use session cookie to automatically upload tarball
+     * currently infeasible due to Rails' CSRF protection
+     */
+
+
+    private static void pump()
+    {
+        try
+        {
+            CdvsUtils.createTarball();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.err.println("bpm: pump: Unable to create tarball for package");
+        }
     }
 
     /*
