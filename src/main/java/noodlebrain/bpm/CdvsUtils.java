@@ -77,6 +77,14 @@ public class CdvsUtils
 
         Archiver archiver = ArchiverFactory.createArchiver("tar");
         archiver.extract(tar, dest);
+
+        // copy BLZ files out of "Source" and into package directory
+        File src = new File("Packages/" + name + "/Source");
+        FileUtils.copyDirectory(src, dest);
+
+        // remove Source directory
+        FileUtils.deleteDirectory(src);
+
         System.out.println("Done.");
     }
 
